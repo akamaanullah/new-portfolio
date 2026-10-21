@@ -21,11 +21,10 @@ A 3D-interactive, modern portfolio and agency website showcasing full-stack deve
 
 ```
 web3d/
-├── chatbot/              # Chatbot widget assets, scripts & styles
-├── css/                  # Page stylesheets & global design system
+├── css/                  # Page stylesheets, chatbot styles & design system
 ├── images/               # Media assets, icons & SVG graphics
 ├── includes/             # Shared PHP templates (header, footer, navbar)
-├── js/                   # Interactive scripts (3D canvas, sliders, tabs)
+├── js/                   # Interactive scripts, chatbot logic, 3D canvas
 ├── logo-v2/              # Favicon icons
 ├── index.php             # Main landing page
 ├── about.php             # About & biography page

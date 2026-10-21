@@ -85,7 +85,7 @@
 
   <!-- AK Chatbot Widget -->
   <?php if (empty($disable_chatbot)): ?>
-  <link rel="stylesheet" href="chatbot/chatbot.css">
+  <link rel="stylesheet" href="css/chatbot.css">
   <script>
     window.AK_CHATBOT_CONFIG = {
       endpoint: null,
@@ -96,7 +96,7 @@
       poweredUrl: 'javascript:void(0)'
     };
   </script>
-  <script src="chatbot/chatbot.js" defer></script>
+  <script src="js/chatbot.js" defer></script>
   <?php endif; ?>
 </body>
 </html>
