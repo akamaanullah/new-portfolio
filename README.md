@@ -13,34 +13,54 @@ A 3D-interactive, modern portfolio and agency website showcasing full-stack deve
 
 ## 🛠️ Tech Stack
 
-- **Backend**: PHP 8.x, Modular Components
-- **Frontend**: Vanilla JavaScript (ES6+), Three.js, CSS3 Custom Properties
-- **Server**: Apache / XAMPP Compatible
+- **Backend**: Custom PHP 8.x MVC Framework (Router, Controllers, Models, PDO Database, File Logger)
+- **Frontend**: Vanilla JavaScript (ES6+), Three.js 3D Canvas, CSS3 Design System
+- **Server**: Apache / LiteSpeed / Nginx compatible with URL rewrites
 
-## 📂 Project Structure
+## 📂 Custom MVC Project Structure
 
 ```
 web3d/
-├── css/                  # Page stylesheets, chatbot styles & design system
-├── images/               # Media assets, icons & SVG graphics
-├── includes/             # Shared PHP templates (header, footer, navbar)
-├── js/                   # Interactive scripts, chatbot logic, 3D canvas
-├── logo-v2/              # Favicon icons
-├── index.php             # Main landing page
-├── about.php             # About & biography page
-├── services.php          # Services catalog
-├── service-detail.php    # In-depth service details
-├── projects.php          # Portfolio showcase
-├── articles.php          # Articles & insights hub
-├── contact.php           # Contact & booking form
-└── README.md
+├── app/                  # Application core
+│   ├── Controllers/      # Controllers (Home, About, Service, Project, Article, Contact)
+│   ├── Core/             # Framework engines (App router, Controller, Database, Model, Logger)
+│   ├── Helpers/          # Global helper functions (env, base_url, asset_url, sanitize, view)
+│   └── Models/           # Data & Business models (ServiceModel, ProjectModel, ArticleModel, ContactModel)
+├── bin/                  # CLI and maintenance utilities
+├── config/               # App & Database configurations (app.php, database.php)
+├── database/             # Database schema migrations & tables (schema.sql)
+├── public/               # Public document root & static assets
+│   ├── css/              # Stylesheets (style.css, chatbot.css, services.css, etc.)
+│   ├── js/               # Client scripts (main.js, chatbot.js, etc.)
+│   ├── images/           # Web visuals, icons & banners
+│   ├── logo-v2/          # Favicon icons
+│   ├── .htaccess         # Public Apache rewrite rules
+│   └── index.php         # Public entry point
+├── storage/              # Runtime data
+│   ├── logs/             # Application exception & activity logs (app.log)
+│   └── cache/            # Caching layer
+├── views/                # Presentation layer
+│   ├── layouts/          # Reusable layouts (header.php, footer.php)
+│   ├── home/             # Landing view (index.php)
+│   ├── about/            # About biography view (index.php)
+│   ├── services/         # Services catalog & detail views
+│   ├── projects/         # Work portfolio & case study views
+│   ├── articles/         # Technical insights & category views
+│   ├── contact/          # Inquiries & appointment views
+│   └── errors/           # Error pages (404.php, 500.php)
+├── .env                  # Local environment configuration
+├── .env.example          # Template environment configuration
+├── .gitignore            # Git exclusion rules
+├── .htaccess             # Root URL routing & security headers
+├── composer.json         # PSR-4 Autoloading registry
+└── index.php             # Master Front Controller bootstrap
 ```
 
 ## 💻 Local Setup
 
 1. Place the project directory in your web server root (e.g. `xampp/htdocs/web3d`).
 2. Start Apache via XAMPP Control Panel.
-3. Open `http://localhost/web3d/` in your browser.
+3. Open `http://localhost/web3d/` in your browser. All clean routes (`/about`, `/services`, `/projects`, `/articles`, `/contact`) work out-of-the-box.
 
 ## 👤 Author
 

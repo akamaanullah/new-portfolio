@@ -1,0 +1,20 @@
+{
+    "name": "akamaanullah/portfolio",
+    "description": "Custom PHP MVC Architecture for 3D Portfolio & Agency Website",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Amaanullah Khan",
+            "email": "info@amaanullah.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Helpers/functions.php"
+        ]
+    }
+}

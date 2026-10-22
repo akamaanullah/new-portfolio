@@ -1,0 +1,30 @@
+<IfModule LiteSpeed>
+    CacheLookup off
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive Off
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule .* - [E=Cache-Control:no-cache]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Cache static assets
+    <FilesMatch "\.(ico|pdf|jpg|jpeg|png|gif|webp|js|css|svg|woff|woff2|ttf|eot|mp4)$">
+        Header set Cache-Control "public, max-age=604800, immutable"
+        Header unset Pragma
+    </FilesMatch>
+
+    # Dynamic responses
+    <FilesMatch "\.(php|html|htm)$">
+        Header set Cache-Control "private, no-store, no-cache, must-revalidate, max-age=0, s-maxage=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+</IfModule>

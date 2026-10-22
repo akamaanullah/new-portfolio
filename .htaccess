@@ -1,0 +1,35 @@
+<IfModule LiteSpeed>
+    CacheLookup off
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive Off
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule .* - [E=Cache-Control:no-cache]
+
+    # Security Headers
+    <IfModule mod_headers.c>
+        Header always set X-Content-Type-Options "nosniff"
+        Header always set X-Frame-Options "SAMEORIGIN"
+        Header always set X-XSS-Protection "1; mode=block"
+        Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    </IfModule>
+
+    # Block access to hidden files and sensitive extensions
+    RewriteRule "(^|/)\." - [F]
+    RewriteRule \.(zip|sql|env|bak|config|log)$ - [F]
+    RewriteRule (composer\.json|composer\.lock)$ - [F]
+
+    # If the requested resource exists in public/, rewrite directly to it
+    RewriteCond %{DOCUMENT_ROOT}/web3d/public/$1 -f [OR]
+    RewriteCond %{DOCUMENT_ROOT}/web3d/public/$1 -d
+    RewriteRule ^(.*)$ public/$1 [L]
+
+    # Otherwise route through front controller
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
